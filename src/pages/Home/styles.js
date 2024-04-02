@@ -33,7 +33,7 @@ export const Brand = styled.div`
 export const Menu = styled.ul`
 grid-area: menu;
 background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
-padding-top: 64px;
+padding-top: 90px;
 text-align: center;
 
 > li {
