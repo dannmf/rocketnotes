@@ -43,10 +43,13 @@ text-align: center;
 
 export const Search = styled.div`
 grid-area: search;
+padding: 64px 64px 0
 `;
 
 export const Content = styled.div`
 grid-area: content;
+padding: 0 64px;
+overflow-y: auto;
 `;
 
 export const NewNote = styled.div`
