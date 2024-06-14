@@ -1,22 +1,23 @@
 import { Container, Form, Avatar } from "./style";
 import { Input } from '../../components/Input'
+import { Link } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi"
 export function Profile() {
     return (
         <Container>
             <header>
-                <a href="/">
+                <Link to="/">
                     <FiArrowLeft />
-                </a>
+                </Link>
             </header>
 
             <Form>
                 <Avatar>
                     <img src='https://github.com/dannmf.png' alt='Foto do Usuario' />
                     <label htmlFor="avatar">
-                    <FiCamera/>
-                    <input id="avatar" type="file" />
+                        <FiCamera />
+                        <input id="avatar" type="file" />
 
                     </label>
 
