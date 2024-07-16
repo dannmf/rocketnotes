@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import { Container, Brand, Menu, Search, Content, NewNote } from './styles'
@@ -12,6 +13,19 @@ import { ButtonText } from '../../components/ButtonText'
 import { FiPlus } from 'react-icons/fi'
 export function Home() {
     const [tags, setTags] = useState([])
+    const [tagsSelected, setTagsSelected] = useState([])
+
+    function handleTagSelected(tagName) {
+        const tagAlreadySelected = tagsSelected.includes(tagName)
+
+        if (tagAlreadySelected) {
+            const tagsFiltered = tagsSelected.filter(tag => tag !== tagName)
+            setTagsSelected(tagsFiltered)
+            return;
+        }
+        setTagsSelected(prevState => [...prevState, tagName]);
+    }
+
 
     useEffect(() => {
         async function fetchTags() {
@@ -30,13 +44,20 @@ export function Home() {
             <Header />
 
             <Menu>
-                <li> <ButtonText title={'Todos'} isActive /></li>
+                <li> <ButtonText
+                    title={'Todos'}
+                    onClick={() => setTagsSelected("all")}
+                    $isactive={ tagsSelected.length === 0 }
+                /></li>
 
                 {
                     tags && tags.map(tag => (
-                        <li>
+                        <li key={tag.id}>
+
                             <ButtonText
                                 title={tag.name}
+                                onClick={() => handleTagSelected(tag.name)}
+                                $isactive={tagsSelected.includes(tag.name)}
                             />
                         </li>
 
