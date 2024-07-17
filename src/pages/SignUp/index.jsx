@@ -38,7 +38,7 @@ export function SignUp() {
             <Background />
 
             <Form>
-                <h1>Rocket Notes</h1>
+                <h1>Notes</h1>
                 <p>Aplicação para salvar e gerenciar seus links importantes.</p>
                 <h2>Crie sua conta</h2>
                 <Input
