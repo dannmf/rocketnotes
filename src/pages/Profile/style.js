@@ -13,6 +13,12 @@ width: 100%;
     align-items: center;
     padding: 0 124px;
 
+    button {
+        background: transparent;
+        border: none;
+        margin-right: 24px;
+    }
+
     svg {
         color: ${({ theme }) => theme.COLORS.GRAY_100};
         font-size: 24px;

@@ -6,10 +6,11 @@ import { Textarea } from '../../components/TextArea'
 import { NoteItem } from '../../components/NoteItem'
 import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
-import { Link } from 'react-router-dom'
 import { Container, Form } from './styles'
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
+import { ButtonText } from '../../components/ButtonText'
+
 
 
 export function New() {
@@ -23,6 +24,10 @@ export function New() {
     const [newTag, setNewTag] = useState('');
 
     const navigate = useNavigate();
+
+    function handleBack() {
+        navigate(-1)
+      }
 
     function handleAddTag() {
         if (!newTag) return alert('A tag não pode ser vazia!');
@@ -57,7 +62,7 @@ export function New() {
         })
 
         alert('Nota criada com sucesso!');
-        navigate('/');
+        navigate(-1);
 
     }
 
@@ -68,7 +73,8 @@ export function New() {
                 <Form>
                     <header>
                         <h1>Criar nota</h1>
-                        <Link to='/'>Voltar</Link>
+
+                        <ButtonText title='Voltar' onClick={handleBack} />
                     </header>
                     <Input
                         placeholder='Titulo'
