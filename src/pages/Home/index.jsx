@@ -8,6 +8,7 @@ import { Section } from '../../components/Section'
 import { Note } from '../../components/Note'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 import { ButtonText } from '../../components/ButtonText'
 import { FiPlus } from 'react-icons/fi'
@@ -16,6 +17,7 @@ export function Home() {
     const [tagsSelected, setTagsSelected] = useState([])
     const [search, setSearch] = useState([])
     const [notes, setNotes] = useState([])
+    const navigate = useNavigate()
 
 
     function handleTagSelected(tagName) {
@@ -29,6 +31,10 @@ export function Home() {
             return;
         }
         setTagsSelected(prevState => [...prevState, tagName]);
+    }
+
+    function handleDetails(id){
+        navigate(`/details/${id}`)
     }
 
 
@@ -95,6 +101,7 @@ export function Home() {
                             <Note
                                 key={String(note.id)}
                                 data={note}
+                                onClick={() => handleDetails(note.id)}
                             />
                         ))
                     }
